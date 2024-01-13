@@ -4,19 +4,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
 import { HeaderComponent } from './Components/header/header.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import { MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule} from "@angular/material/menu"
+import { MaterialModule } from './Material/material.module';
+import { RecordsComponent } from './Features/records/records.component';
+import { AdvnaceComponent } from './Features/advnace/advnace.component';
+import { FormsModule } from '@angular/forms';
+import { DailogueboxComponent } from './Features/dailoguebox/dailoguebox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
+    RecordsComponent,
+    AdvnaceComponent,
+    DailogueboxComponent,
     
     
 
@@ -25,14 +27,9 @@ import {MatMenuModule} from "@angular/material/menu"
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
+    MaterialModule,
     BrowserAnimationsModule,
-    MatMenuModule
+    FormsModule
     
   ],
   providers: [],

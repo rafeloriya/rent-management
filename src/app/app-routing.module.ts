@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Components/home/home.component';
+import { RecordsComponent } from './Features/records/records.component';
+import { AdvnaceComponent } from './Features/advnace/advnace.component';
 
 
 const routes: Routes = [
+  { path: "records", component: RecordsComponent },
+  { path: "advance", component: AdvnaceComponent },
   
   
   

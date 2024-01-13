@@ -1,0 +1,52 @@
+<mat-card class="example-container">
+    <mat-card-header class="flex-end">
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Enter the text" />
+        </mat-form-field>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="srNo" sticky>
+                <th mat-header-cell *matHeaderCellDef> Sr No </th>
+                <td mat-cell *matCellDef="let record; let i = index"> {{getSerialNumber(i)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ShopNumber" sticky>
+                <th mat-header-cell *matHeaderCellDef> Shop Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.ShopNumber}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ShopKeeperName">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.ShopKeeperName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fatherName">
+                <th mat-header-cell *matHeaderCellDef>Father Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.fatherName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="AdvanceAmount">
+                <th mat-header-cell *matHeaderCellDef>Advance </th>
+                <td mat-cell *matCellDef="let element"> {{element.AdvanceAmount}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="DuesCurrentStatus">
+                <th mat-header-cell *matHeaderCellDef>Advance </th>
+                <td mat-cell *matCellDef="let element"> {{element.DuesCurrentStatus}} </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+
+    </mat-card-content>
+</mat-card>

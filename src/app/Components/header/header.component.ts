@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  tenantName = "Rent Management System";
+  socialMediaUrl ="https://www.youtube.com"
   badgevisible = false;
   badgevisibility() {
     this.badgevisible = true;

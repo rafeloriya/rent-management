@@ -1,0 +1,65 @@
+// .mat-mdc-table-sticky-border-elem-left {
+//     border-right: 1px solid #e0e0e0;
+// }
+.example-container {
+    height: 400px;
+    width: auto;
+    overflow: auto;
+}
+
+table {
+    width: 800px;
+}
+
+
+// mat-card {
+//     margin: 10%;
+// }
+th {
+    background-color: #3f51b5  !important;
+    color: white;
+}
+
+.company-Name{
+    margin-bottom: 1%;
+
+}
+.m-left{
+    margin-left: 65%;
+
+}
+td input {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    
+    border-color: #463fb5;
+}
+
+mat-card {
+    overflow: hidden;
+}
+
+mat-card-content {
+    overflow-x: auto;
+}
+
+
+
+
+
+
+/* Sticky header */
+mat-card-header {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 1;
+}
+mat-paginator {
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 1;
+    margin: 0px 16px;
+}

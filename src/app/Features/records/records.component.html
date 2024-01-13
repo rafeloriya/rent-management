@@ -1,0 +1,179 @@
+<mat-card class="company-Name">
+    <mat-card-content>Simple card</mat-card-content>
+</mat-card>
+
+<mat-card class="tab">
+    <mat-card-header>
+        <mat-form-field>
+            <mat-label>Month and Year</mat-label>
+            <input matInput [matDatepicker]="dp" [(ngModel)]="selectedYear">
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
+                panelClass="example-month-picker">
+            </mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="m-left" appearance="outline">
+            <input matInput placeholder="Enter the text" />
+        </mat-form-field>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="example-container mat-elevation-z8">
+
+
+            <table  mat-table [dataSource]="dataSource">
+                <!-- Position Column -->
+                <ng-container matColumnDef="srNo" sticky>
+                    <th mat-header-cell *matHeaderCellDef> Sr No </th>
+                    <td mat-cell *matCellDef="let record; let i = index"> {{getSerialNumber(i)}} </td>
+                    <td mat-footer-cell *matFooterCellDef>  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ShopNumber" sticky>
+                    <th mat-header-cell *matHeaderCellDef> Shop Number </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ShopNumber}} </td>
+                    <td mat-footer-cell *matFooterCellDef> </td>
+                </ng-container>
+
+                <ng-container matColumnDef="ShopKeeperName" sticky>
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element" (click)="openDialog(element)" (mouseleave)="closeDialog()"> {{element.ShopKeeperName}} </td>
+                    <td mat-footer-cell *matFooterCellDef> </td>
+                </ng-container>
+
+                <ng-container matColumnDef="fatherName" sticky>
+                    <th mat-header-cell *matHeaderCellDef>Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.DuesCurrentStatus}} </td>
+                    <td mat-footer-cell *matFooterCellDef> </td>
+                </ng-container>
+
+                <ng-container matColumnDef="january">
+                    <th mat-header-cell *matHeaderCellDef>January </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder=""  [ngModel]="element.records[selectedYear.getFullYear().toString()].January.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('January')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="febuary">
+                    <th mat-header-cell *matHeaderCellDef>Febuary </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].February.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('February')}} </td>
+
+                </ng-container>
+
+                <ng-container matColumnDef="march">
+                    <th mat-header-cell *matHeaderCellDef>March </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].March.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('March')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="april">
+                    <th mat-header-cell *matHeaderCellDef>April </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].April.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('April')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="may">
+                    <th mat-header-cell *matHeaderCellDef>May </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].May.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('May')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="june">
+                    <th mat-header-cell *matHeaderCellDef>June </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].June.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('June')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="july">
+                    <th mat-header-cell *matHeaderCellDef>July </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].July.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('July')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="august">
+                    <th mat-header-cell *matHeaderCellDef>August </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].August.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('August')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="september">
+                    <th mat-header-cell *matHeaderCellDef>September </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].September.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('September')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="october">
+                    <th mat-header-cell *matHeaderCellDef>October </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].October.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('October')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="november" >
+                    <th mat-header-cell *matHeaderCellDef>November </th>
+                    <td mat-cell *matCellDef="let element">
+                        <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].November.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('November')}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="december" >
+                    <th mat-header-cell *matHeaderCellDef sticky>December </th>
+                    <td mat-cell *matCellDef="let element">
+                    <input placeholder="" readonly [ngModel]="element.records[selectedYear.getFullYear().toString()].December.amount" />
+                    </td>
+                    <td mat-footer-cell *matFooterCellDef> {{totalAmount('December')}} </td>
+                </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+
+
+
+            </table>
+        </div>
+
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator> -->
+    </mat-card-content>
+    
+        
+
+        
+        <mat-paginator class="mat-elevation-z8" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+        
+   
+</mat-card>
